@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/all.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>امتحاني</title>
+  </head>
+
+  <body class="bg-black">
+    <div class="loading-layer bg-secondary">
+      <i class="fa-solid fa-spinner fa-spin fa-10x"></i>
+    </div>
+
+    <nav class="vh-100">
+      <div class="nav-items h-100">
+        <section>
+          <ul>
+            <li id="searchbtn">Search</li>
+            <li id="Categorybtn">Categories</li>
+            <li id="areabtn">Area</li>
+            <li id="ingrediantsbtn">Ingredients</li>
+            <li id="contactbtn">Contact Us</li>
+          </ul>
+          <div class="nav-footer">
+            <div class="nav-icn mb-3">
+              <i class="fa-brands fa-twitter me-2"></i>
+              <i class="fa-brands fa-facebook me-2"></i>
+              <i class="fa-solid fa-globe"></i>
+            </div>
+            <p>Copyright Â© 2019 All Rights <br />Reserved.</p>
+          </div>
+        </section>
+
+        <div class="nav-header fs-4">
+          <figure class="logo">
+            <img src="./img/logo.png" alt="smily-face" class="w-100" />
+          </figure>
+          <div class="close-open-icn">
+            <div class="nav-open"><i class="fa-solid fa-bars fa-2x"></i></div>
+            <div class="nav-close d-none">
+              <i class="fa-solid fa-close fa-2x"></i>
+            </div>
+          </div>
+          <div class="global-icn">
+            <i class="fa-solid fa-globe"></i><br />
+            <i class="fa-solid fa-share-from-square"></i>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <section class="food-instruction py-5 d-none">
+      <div class="container px-3">
+        <div class="row">
+          <div class="col-md-4">
+            <figure class="instruction-img"></figure>
+            <figcaption id="mealName"></figcaption>
+          </div>
+          <div class="col-md-8">
+            <section class="instruction">
+              <h2>Instruction</h2>
+              <p id="instruc-text">
+                Pick through your lentils for any foreign debris, rinse them 2
+                or 3 times, drain, and set aside. Fair warning, this will
+                probably turn your lentils into a solid block that you’ll have
+                to break up later In a large pot over medium-high heat, sauté
+                the olive oil and the onion with a pinch of salt for about 3
+                minutes, then add the carrots and cook for another 3 minutes.
+                Add the tomato paste and stir it around for around 1 minute. Now
+                add the cumin, paprika, mint, thyme, black pepper, and red
+                pepper as quickly as you can and stir for 10 seconds to bloom
+                the spices. Congratulate yourself on how amazing your house now
+                smells. Immediately add the lentils, water, broth, and salt.
+                Bring the soup to a (gentle) boil. After it has come to a boil,
+                reduce heat to medium-low, cover the pot halfway, and cook for
+                15-20 minutes or until the lentils have fallen apart and the
+                carrots are completely cooked. After the soup has cooked and the
+                lentils are tender, blend the soup either in a blender or simply
+                use a hand blender to reach the consistency you desire. Taste
+                for seasoning and add more salt if necessary. Serve with
+                crushed-up crackers, torn up bread, or something else to add
+                some extra thickness. You could also use a traditional thickener
+                (like cornstarch or flour), but I prefer to add crackers for
+                some texture and saltiness. Makes great leftovers, stays good in
+                the fridge for about a week.
+              </p>
+              <h3>Area : <span id="area"></span></h3>
+              <h3>Category : <span id="strCategory"></span></h3>
+              <h3>Recipe :</h3>
+              <div class="recipes d-flex flex-wrap"></div>
+              <h3 class="mt-4">Tags :</h3>
+              <div class="mb-3 tag-type"><span></span></div>
+              <br />
+              <a class="btn btn-success" href="#" id="Source">Source</a>
+              <a class="btn btn-danger" href="#" id="Youtupe">Youtupe</a>
+            </section>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-5 searchInputs d-none">
+      <div class="container d-flex justify-content-evenly">
+        <input
+          id="searchByName"
+          type="text"
+          class="form-control w-25"
+          placeholder="Serach By Name"
+        />
+        <input
+          id="searchByFL"
+          maxlength="1"
+          type="text"
+          class="form-control w-25"
+          placeholder="Serach By FirstLetter"
+        />
+      </div>
+    </section>
+
+    <main class="py-5 d-none">
+      <div class="container gx-5">
+        <div class="row g-3" id="meals"></div>
+      </div>
+    </main>
+
+    <section id="Food-type" class="d-none">
+      <div class="container gx-5">
+        <div class="row g-3" id="Category"></div>
+      </div>
+    </section>
+
+    <section id="Food-Area" class="py-5">
+      <div class="container gx-5">
+        <div class="row g-4 text-center text-white" id="Area"></div>
+      </div>
+    </section>
+    <section id="Food-ingrediants" class="py-5 d-none">
+      <div class="container gx-5">
+        <div class="row g-4 text-center text-white" id="ingrediants"></div>
+      </div>
+    </section>
+
+    <section
+      id="contact-us"
+      class="d-none d-flex justify-content-center align-items-center vh-100"
+    >
+      <div class="container text-center">
+        <div class="w-75 mx-auto d-flex justify-content-between">
+          <div class="w-50 px-4">
+            <input
+              type="text"
+              class="form-control mb-3"
+              placeholder="Enter Your Name"
+            />
+            <input
+              type="text"
+              class="form-control mb-3"
+              placeholder="Enter Your phone"
+            />
+            <input
+              type="text"
+              class="form-control mb-3"
+              placeholder="Enter Your passowrd"
+            />
+          </div>
+          <div class="w-50 px-4">
+            <input
+              type="text"
+              class="form-control mb-3"
+              placeholder="Enter Your Email"
+            />
+            <input
+              type="text"
+              class="form-control mb-3"
+              placeholder="Enter Your Age"
+            />
+            <input
+              type="text"
+              class="form-control mb-3"
+              placeholder="Enter Your Repassword"
+            />
+          </div>
+        </div>
+        <button class="btn btn-outline-danger mt-2">Submit</button>
+      </div>
+    </section>
+
+    <script src="js/code.jquery.com_jquery-3.7.0.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/all.min.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
