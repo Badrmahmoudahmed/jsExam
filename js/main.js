@@ -7,6 +7,17 @@ $(document).ready(function () {
   });
 });
 
+function makeloading(){
+  $(".loading-layer").fadeIn(50, function () {
+    $("body").css("overflow", "hidden");
+  });
+}
+function endloading(){
+  $(".loading-layer").fadeOut(600, function () {
+    $("body").css("overflow", "visible");
+  });
+}
+
 let navItemsWidth = "-" + $("nav .nav-items section").outerWidth() + "px";
 document.querySelector("nav").style.left = navItemsWidth;
 $(".nav-open").click(function () {
@@ -27,6 +38,7 @@ let category = [];
 let AreaContainer = [];
 let ingradiantsContainer = [];
 async function fetchApi(search = "") {
+  makeloading()
   let apifetching = await fetch(
     `https://www.themealdb.com/api/json/v1/1/search.php?s=${search}`
   );
@@ -36,9 +48,11 @@ async function fetchApi(search = "") {
   if (meals == null) {
     meals = [];
   }
+  endloading()
   displayFood();
 }
 async function fetchApiForSerchFS(search = "") {
+  makeloading()
   let apifetching = await fetch(
     `https://www.themealdb.com/api/json/v1/1/search.php?f=${search}`
   );
@@ -47,18 +61,21 @@ async function fetchApiForSerchFS(search = "") {
   if (meals == null) {
     meals = [];
   }
+  endloading()
   displayFood();
 }
 async function fetchApiForCategory() {
+  makeloading()
   let apifetching = await fetch(
     `https://www.themealdb.com/api/json/v1/1/categories.php`
   );
   let response = await apifetching.json();
   category = response.categories;
-  console.log(category);
+  endloading()
   displayCategories();
 }
 async function filterByCategory(search) {
+  makeloading()
   let apifetching = await fetch(
     `https://www.themealdb.com/api/json/v1/1/filter.php?c=${search}`
   );
@@ -68,9 +85,11 @@ async function filterByCategory(search) {
   if (meals == null) {
     meals = [];
   }
+  endloading()
   displayFood();
 }
 async function filterByid(search) {
+  makeloading()
   let apifetching = await fetch(
     `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${search}`
   );
@@ -80,44 +99,52 @@ async function filterByid(search) {
   if (meals == null) {
     meals = [];
   }
+  endloading()
   displayInstruction(0);
   makeIngrdiant(0);
 }
 async function fetchAreaApi() {
+  makeloading()
   let apifetching = await fetch(
     `https://www.themealdb.com/api/json/v1/1/list.php?a=list`
   );
   let response = await apifetching.json();
   AreaContainer = response.meals;
+  endloading()
   displayArea();
-  console.log(AreaContainer);
 }
 async function fetchingrediantsApi() {
+  makeloading()
   let apifetching = await fetch(
     `https://www.themealdb.com/api/json/v1/1/list.php?i=list`
   );
   let response = await apifetching.json();
   ingradiantsContainer = response.meals;
-  console.log(ingradiantsContainer);
+  endloading
   displayingrdiants();
 }
 async function fetchFilterByAreaApi(search) {
+  makeloading()
   let apifetching = await fetch(
     `https://www.themealdb.com/api/json/v1/1/filter.php?a=${search}`
   );
   let response = await apifetching.json();
   meals = response.meals;
   console.log(meals);
+  endloading()
   displayFood();
 }
 async function fetchFilterByingrediantApi(search) {
+  makeloading()
   let apifetching = await fetch(
     `https://www.themealdb.com/api/json/v1/1/filter.php?i=${search}`
   );
   let response = await apifetching.json();
   meals = response.meals;
   console.log(meals);
+  endloading()
   displayFood();
+  
 }
 
 let mealsContainer = document.getElementById("meals");
@@ -331,6 +358,7 @@ document.getElementById("searchbtn").addEventListener("click", function () {
   contactUs.classList.add("d-none");
   food_area.classList.add("d-none");
   food_ingrediants.classList.add("d-none");
+  endloading()
 });
 document
   .getElementById("Categorybtn")
@@ -343,6 +371,7 @@ document
     contactUs.classList.add("d-none");
     food_area.classList.add("d-none");
     food_ingrediants.classList.add("d-none");
+    endloading()
   });
 document.getElementById("areabtn").addEventListener("click", async function () {
   await fetchAreaApi();
@@ -353,6 +382,7 @@ document.getElementById("areabtn").addEventListener("click", async function () {
   contactUs.classList.add("d-none");
   food_area.classList.remove("d-none");
   food_ingrediants.classList.add("d-none");
+  endloading()
 });
 document
   .getElementById("ingrediantsbtn")
@@ -365,6 +395,7 @@ document
     food_area.classList.add("d-none");
     contactUs.classList.add("d-none");
     food_ingrediants.classList.remove("d-none");
+    endloading()
   });
 document
   .getElementById("contactbtn")
@@ -377,4 +408,5 @@ document
     food_area.classList.add("d-none");
     food_ingrediants.classList.add("d-none");
     contactUs.classList.remove("d-none");
+    endloading()
   });
